@@ -1,23 +1,20 @@
-import {DebugProvider} from '../src/providers/DebugProvider';
-import {GlobalStyle} from '../src/providers/GlobalStyle';
-import MultiThemeProvider from "../src/providers/MultiThemeProvider";
-import {DialogProvider} from "../src/providers/DialogProvider";
-import I18nProvider from "../src/providers/I18nProvider";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import MainPage from "pages/main";
+import AboutPage from "pages/about";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <MainPage></MainPage>
+  },
+  {
+    path: '/about',
+    element: <AboutPage></AboutPage>
+  }
+]);
 
 function App() {
-  return (
-    <DebugProvider>
-      <MultiThemeProvider>
-        <GlobalStyle></GlobalStyle>
-        <DialogProvider>
-          <I18nProvider>
-            <MainPage></MainPage>
-          </I18nProvider>
-        </DialogProvider>
-      </MultiThemeProvider>
-    </DebugProvider>
-  );
+  return <RouterProvider router={router}/>;
 }
 
 export default App;
